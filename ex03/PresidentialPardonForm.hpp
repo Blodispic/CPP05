@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rozhou <rozhou@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/09 21:31:32 by rozhou            #+#    #+#             */
-/*   Updated: 2022/04/09 21:31:32 by rozhou           ###   ########lyon.fr   */
+/*   Created: 2022/04/09 17:59:32 by rozhou            #+#    #+#             */
+/*   Updated: 2022/04/09 17:59:32 by rozhou           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include "AForm.hpp"
 #include <iostream>
 #include <string>
 #include <stdexcept>
 
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm: public AForm
 {
 private:
     std::string const _target;
 
 public:
-    RobotomyRequestForm();
-    RobotomyRequestForm(std::string target);
-    RobotomyRequestForm(RobotomyRequestForm const &src);
-    ~RobotomyRequestForm();
+    PresidentialPardonForm();
+    PresidentialPardonForm(std::string target);
+    PresidentialPardonForm(PresidentialPardonForm const& src);
+    ~PresidentialPardonForm();
 
-    void execute(Bureaucrat const &executor) const;
+    void execute(Bureaucrat const & executor) const;
 
-    RobotomyRequestForm operator=(RobotomyRequestForm const &rhs);
+    PresidentialPardonForm operator=(PresidentialPardonForm const& rhs);
 };
 #endif
