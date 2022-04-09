@@ -14,7 +14,27 @@
 
 int main(void)
 {
-    Bureaucrat max("Max", 15);
+    Bureaucrat max("Max", 1);
+    Bureaucrat toomax("Max2", 1500);
+    Bureaucrat copy(max);
+
+    std::cout << max << std::endl;
+    std::cout << toomax << std::endl;
+    std::cout << copy << std::endl << std::endl;
+    max.minusGrade();
+    std::cout << max << std::endl;
+    max.plusGrade();
+    std::cout << max << std::endl;
+    max.plusGrade();
+    std::cout << max << std::endl;
+
+    toomax.minusGrade();
+    std::cout << toomax << std::endl;
+    toomax.minusGrade();
+    std::cout << toomax << std::endl;
+    toomax.plusGrade();
+    std::cout << toomax << std::endl;
+
 
     return (0);
 }

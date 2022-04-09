@@ -20,6 +20,7 @@ Bureaucrat::Bureaucrat() : _name("Noob Bureaucrat"), _grade(83)
 
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 {
+    std::cout << "Set Constructor called" << std::endl;
     try
     {
         if (grade < 1)
@@ -41,10 +42,10 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
     }
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const& src)
+Bureaucrat::Bureaucrat(Bureaucrat const& src): _name("Copy")
 {
     std::cout << "Copy Constructor called" << std::endl;
-    *this = src;
+    this->_grade = src._grade;
     return ;
 }
 
@@ -64,18 +65,54 @@ std::string    Bureaucrat::getName(void) const
     return (this->_name);
 }
 
+void    Bureaucrat::plusGrade()
+{
+    try
+    {
+        if (this->_grade - 1 < 1)
+            throw Bureaucrat::GradeTooHighException();
+        else
+            this->_grade--;
+    }
+    catch (GradeTooHighException& high)
+    {
+        std::cerr << high.what() << std::endl; 
+    }
+}
+
+void    Bureaucrat::minusGrade()
+{
+    try
+    {
+        if (this->_grade + 1 > 150)
+            throw Bureaucrat::GradeTooLowException();
+        else
+            this->_grade++;
+    }
+    catch (GradeTooLowException& low)
+    {
+        std::cerr << low.what() << std::endl; 
+    }
+}
+
+const	char* Bureaucrat::GradeTooHighException::what(void) const throw()
+{
+	return ("Grade is too High exception");
+}
+
+const	char* Bureaucrat::GradeTooLowException::what(void) const throw()
+{
+	return ("Grade is too low exception");
+}
+
 Bureaucrat & Bureaucrat::operator=(Bureaucrat const& rhs)
 {
-    *this = rhs;
+    this->_grade = rhs._grade;
     return (*this);
 }
 
-const char* Bureaucrat::GradeTooHighException::what() const
+std::ostream & operator<<(std::ostream & out, Bureaucrat const& src)
 {
-    return ("Grade is too high exception");
-}
-
-const char* Bureaucrat::GradeTooLowException::what() const
-{
-    return ("Grade is too low exception");
+    out << src.getName() << ", bureaucrat grade " << src.getGrade() << ".";
+    return (out);
 }

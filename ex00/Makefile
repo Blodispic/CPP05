@@ -1,8 +1,8 @@
 ##############################  SOURCE & OBJETS  ###############################
 
-SRCS = main.c Bureaucrat.cpp
+SRCS = main.cpp Bureaucrat.cpp
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 
 ################################  VARIABLES  ###################################
 
@@ -12,7 +12,7 @@ INCLUDE = Bureaucrat.hpp Makefile
 
 RM = rm -f
 
-GCCF = gcc -Wall -Wextra -Werror -std=c++98
+GCCF = c++ -Wall -Wextra -Werror -std=c++98
 
 ##################################  RULES  #####################################
 
@@ -34,7 +34,7 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re bonus
+.PHONY:		all clean fclean re bonus libf
 
 
 #################################### END  ######################################
