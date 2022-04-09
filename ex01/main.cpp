@@ -18,10 +18,18 @@ int main(void)
     Bureaucrat max("Max", 1);
     Bureaucrat toomax("Max2", 50);
     Bureaucrat copy(max);
+    Bureaucrat copyassignment;
+    copyassignment = copy;
 
     Form    form1("Big form", 50, 40);
-    Form    form2("Small form", 50, 40);
+    Form    form2;
+    Form    form3(form2);
+
+    form2 = form1;
     
+    std::cout << form1 << std::endl;
+    std::cout << form2 << std::endl;
+    std::cout << form3 << std::endl;
 
     std::cout << std::endl << max << std::endl;
     std::cout << toomax << std::endl;
@@ -51,6 +59,7 @@ int main(void)
     toomax.signForm(form2);
     toomax.signForm(form2);
 
+    std::cout << copyassignment << std::endl;
 
     return (0);
 }

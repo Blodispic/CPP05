@@ -10,24 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form(): _name("Noob Form"), _signed(false), _minsigned(50), _minexec(40)
+AForm::AForm(): _name("Noob Form"), _signed(false), _minsigned(50), _minexec(40)
 {
-    std::cout << "Default Form Constructor called" << std::endl;
+    //std::cout << "Default Form Constructor called" << std::endl;
     return;
 }
 
-Form::Form(std::string name, int minSigned, int minExec)
+AForm::AForm(std::string name, int minSigned, int minExec)
 : _name(name), _signed(false), _minsigned(minSigned), _minexec(minExec)
 {
-    std::cout << "Set Form Constructor called" << std::endl;
+    //std::cout << "Set Form Constructor called" << std::endl;
     try
     {
         if (minSigned < 1 || minExec < 1)
-            throw Form::GradeTooHighException();
+            throw AForm::GradeTooHighException();
         else if (minSigned > 150 || minExec > 150)
-            throw Form::GradeTooLowException();
+            throw AForm::GradeTooLowException();
     }
     catch (GradeTooHighException &high)
     {
@@ -39,58 +39,63 @@ Form::Form(std::string name, int minSigned, int minExec)
     }
 }
 
-Form::Form(Form const &src) : _name("Copy"), _minexec(50), _minsigned(80)
+AForm::AForm(AForm const &src) : _name("Copy"), _minexec(50), _minsigned(80)
 {
-    std::cout << "Copy Form Constructor called" << std::endl;
+    //std::cout << "Copy Form Constructor called" << std::endl;
     this->_signed = src._signed;
     return ;
 }
 
-Form::~Form()
+AForm::~AForm()
 {
-    std::cout << "Destructor Form called" << std::endl;
+    //std::cout << "Destructor Form called" << std::endl;
     return;
 }
 
-std::string Form::getName(void) const
+std::string AForm::getName(void) const
 {
     return (this->_name);
 }
 
-int    Form::getMinSigned(void) const
+int    AForm::getMinSigned(void) const
 {
     return (this->_minsigned);
 }
 
-int    Form::getMinExec(void) const
+int    AForm::getMinExec(void) const
 {
     return (this->_minexec);
 }
 
-bool   Form::isSigned(void) const
+bool   AForm::isSigned(void) const
 {
     return (this->_signed);
 }
 
-const char *Form::GradeTooHighException::what(void) const throw()
+const char *AForm::GradeTooHighException::what(void) const throw()
 {
     return ("Grade is too High exception");
 }
 
-const char *Form::GradeTooLowException::what(void) const throw()
+const char *AForm::GradeTooLowException::what(void) const throw()
 {
     return ("Grade is too low exception");
 }
 
-void Form::beSigned(Bureaucrat const& src)
+const char *AForm::FormUnsigned::what(void) const throw()
+{
+    return ("Form is not signed");
+}
+
+void AForm::beSigned(Bureaucrat const& src)
 {
     try
     {
         if (src.getGrade() <= this->_minsigned && this->_signed == true)
-            std::cout << "The form is already signed." << std::endl;  
+            std::cout << "The form " << this->_name << "is already signed." << std::endl;  
         else if (src.getGrade() <= this->_minsigned)
         {
-            std::cout << "The form is now signed." << std::endl;
+            std::cout << "The form " << this->_name << " is now signed." << std::endl;
             this->_signed = true;
         }
         else
@@ -103,13 +108,23 @@ void Form::beSigned(Bureaucrat const& src)
 
 }
 
-Form &Form::operator=(Form const &rhs)
+void AForm::isExecutable(Bureaucrat const& executor) const
+{
+    if (this->_signed == false)
+    {
+        throw AForm::FormUnsigned();
+    }
+    else if (executor.getGrade() > this->_minexec)
+        throw AForm::GradeTooLowException();
+}
+
+AForm &AForm::operator=(AForm const &rhs)
 {
     this->_signed = rhs._signed;
     return (*this);
 }
 
-std::ostream& operator<<(std::ostream &out, Form const& src)
+std::ostream &operator<<(std::ostream &out, AForm const &src)
 {
     out << src.getName() << ":\nIs signed ? " << src.isSigned() << std::endl \
         << "Minimun grade to sign: " << src.getMinSigned() << std::endl \
