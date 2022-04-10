@@ -13,14 +13,14 @@
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-    : AForm("ShrubberyCreationForm", 72, 45), _target("Pomme solitaire")
+    : AForm("ShrubberyCreationForm", 145, 137), _target("Pomme solitaire")
 {
     // std::cout << "RobotomyRequestForm Default constructor called" << std::endl;
     return;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-    : AForm("ShrubberyCreationForm", 72, 45), _target(target)
+    : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
     // std::cout << "ShrubberyCreationForm Target constructor called" << std::endl;
     return;

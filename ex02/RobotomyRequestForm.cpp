@@ -13,14 +13,14 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm()
-    : AForm("RobotomyRequestForm", 145, 137), _target("Pomme solitaire")
+    : AForm("RobotomyRequestForm", 72, 45), _target("Pomme solitaire")
 {
     // std::cout << "RobotomyRequestForm Default constructor called" << std::endl;
     return;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
-    : AForm("RobotomyRequestForm", 145, 137), _target(target)
+    : AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
     // std::cout << "RobotomyRequestForm Target constructor called" << std::endl;
     return;
