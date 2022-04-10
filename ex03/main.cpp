@@ -15,6 +15,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 
 int main(void)
 {
@@ -22,25 +23,32 @@ int main(void)
     Bureaucrat Noobureacrat("Noob Bureaucrat", 150);
     Bureaucrat copy(max);
 
-    PresidentialPardonForm form1("Lolipop");
-    PresidentialPardonForm form2;
-    form2 = form1;
+    //PresidentialPardonForm form1("Lolipop");
+    //PresidentialPardonForm form2;
 
     ShrubberyCreationForm   tree1("BIgTree");
 
     RobotomyRequestForm     robot1("Robot");
 
-    std::cout << form1 << std::endl;
-    max.executeForm(form1);
-    form1.execute(max);
-    form1.execute(Noobureacrat);
-    Noobureacrat.signForm(form1);
-    max.signForm(form1);
-    form1.execute(max);
-    form1.execute(Noobureacrat);
-    form2.execute(max);
-    max.executeForm(form1);
-    Noobureacrat.executeForm(form1);
+    Intern  Slave;
+
+    AForm *form1 = Slave.makeForm("shrubbery creation", "Saumon");
+    AForm *form2 = Slave.makeForm("robotomy request", "Raumon");
+    AForm* form3 = Slave.makeForm("presidential pardon", "Paumon");
+    AForm *form4 = Slave.makeForm("FakeForm", "Fakulté");
+    std::cout << *form1 << std::endl;
+    std::cout << *form2<< std::endl;
+    std::cout << *form3 << std::endl;
+    max.executeForm(*form1);
+    form1->execute(max);
+    form1->execute(Noobureacrat);
+    Noobureacrat.signForm(*form1);
+    max.signForm(*form1);
+    form1->execute(max);
+    form1->execute(Noobureacrat);
+    form2->execute(max);
+    max.executeForm(*form1);
+    Noobureacrat.executeForm(*form1);
     max.executeForm(tree1);
     max.signForm(tree1);
     max.executeForm(tree1);
@@ -50,5 +58,8 @@ int main(void)
     for (int i = 0; i < 10; i++)
         max.executeForm(robot1);
 
+    delete form1;
+    delete form2;
+    delete form3;
     return (0);
 }

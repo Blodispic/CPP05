@@ -1,7 +1,7 @@
 ##############################  SOURCE & OBJETS  ###############################
 
 SRCS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp \
-			RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+			RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -10,7 +10,7 @@ OBJS = $(SRCS:.cpp=.o)
 NAME = Bureaucrat
 
 INCLUDE = Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp Makefile \
-			RobotomyRequestForm.hpp ShrubberyCreationForm.hpp
+			RobotomyRequestForm.hpp ShrubberyCreationForm.hpp Intern.hpp
 
 RM = rm -f
 

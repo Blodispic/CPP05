@@ -136,8 +136,8 @@ AForm &AForm::operator=(AForm const &rhs)
 
 std::ostream &operator<<(std::ostream &out, AForm const &src)
 {
-    out << src.getName() << ":\nIs signed ? " << src.isSigned() << std::endl \
-        << "Minimun grade to sign: " << src.getMinSigned() << std::endl \
-        << "Minimum grade to execute: "<< src.getMinExec() << std::endl;
+    out << src.getName() << ":\nIs signed ? " << src.isSigned() << std::endl
+        << "Minimun grade to sign: " << src.getMinSigned() << std::endl
+        << "Minimum grade to execute: " << src.getMinExec() << std::endl;       
     return (out);
 }
