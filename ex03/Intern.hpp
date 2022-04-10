@@ -24,13 +24,17 @@ class Intern
 {
 private:
     std::string Form[3];
+    AForm* (Intern::*FormExec[3])(std::string target);
 public:
     Intern();
     Intern(Intern const& src);
     ~Intern();
     Intern&  operator=(Intern const& rhs);
+    AForm*  PresidentForm(std::string target);
+    AForm*  RobotForm(std::string target);
+    AForm*  ShrubberyForm(std::string target);
 
-    AForm*   makeForm(std::string FormName, std::string target) const;
+    AForm*   makeForm(std::string FormName, std::string target);
 };
 
 #endif

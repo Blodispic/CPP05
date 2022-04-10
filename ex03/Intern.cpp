@@ -18,6 +18,9 @@ Intern::Intern()
     this->Form[0] = "shrubbery creation";
     this->Form[1] = "robotomy request";
     this->Form[2] = "presidential pardon";
+    this->FormExec[0] = &Intern::ShrubberyForm;
+    this->FormExec[1] = &Intern::RobotForm;
+    this->FormExec[2] = &Intern::PresidentForm;
     return ;
 }
 
@@ -33,6 +36,9 @@ Intern::Intern(Intern const& src)
     this->Form[0] = src.Form[0];
     this->Form[1] = src.Form[1];
     this->Form[2] = src.Form[2];
+    this->FormExec[0] = src.FormExec[0];
+    this->FormExec[1] = src.FormExec[1];
+    this->FormExec[2] = src.FormExec[2];
     return ;
 }
 
@@ -42,29 +48,39 @@ Intern& Intern::operator=(Intern const& rhs)
     this->Form[0] = rhs.Form[0];
     this->Form[1] = rhs.Form[1];
     this->Form[2] = rhs.Form[2];
+    this->FormExec[0] = rhs.FormExec[0];
+    this->FormExec[1] = rhs.FormExec[1];
+    this->FormExec[2] = rhs.FormExec[2];
     return (*this);
 }
 
-AForm* Intern::makeForm(std::string FormName, std::string target) const
+AForm* Intern::PresidentForm(std::string target)
+{
+    return (new PresidentialPardonForm(target));
+}
+
+AForm* Intern::RobotForm(std::string target)
+{
+    return (new RobotomyRequestForm(target));
+}
+
+AForm* Intern::ShrubberyForm(std::string target)
+{
+    return (new ShrubberyCreationForm(target));
+}
+
+AForm* Intern::makeForm(std::string FormName, std::string target)
 {
     int i;
 
     i = 0;
     while (i < 3 && FormName != this->Form[i])
         i++;
-    switch (i)
+    if (i >= 3)
     {
-    case 0:
-        std::cout << "Intern creates " << FormName << std::endl;
-        return (new ShrubberyCreationForm(target));
-    case 1:
-        std::cout << "Intern creates " << FormName << std::endl;
-        return (new RobotomyRequestForm(target));
-    case 2:
-        std::cout << "Intern creates " << FormName << std::endl;
-        return (new PresidentialPardonForm(target));
-    default:
         std::cout << "The Form: " << FormName << " doesn't exist." << std::endl;
         return (NULL);
     }
+    std::cout << "Intern creates " << FormName << std::endl;
+    return ((this->*FormExec[i])(target));
 }
