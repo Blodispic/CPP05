@@ -56,10 +56,13 @@ int main(void)
     std::cout << toomax << std::endl;
     toomax.plusGrade();
     std::cout << toomax << std::endl;
+
+    std::cout << form2 << std::endl;
     toomax.signForm(form2);
     toomax.signForm(form2);
 
     std::cout << copyassignment << std::endl;
+    std::cout << form2 << std::endl;
 
     return (0);
 }
