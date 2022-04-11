@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
-#define BUREACURAT_HPP
+#define BUREAUCRAT_HPP
 
 #include <iostream>
 #include <string>

@@ -54,7 +54,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
         std::cerr << executor.getName() << " " << e.what() << std::endl;
         return;
     }
-        std::cout << "Brrrrrrrrrrrrrrrrr   Directed by mberrrrrn" << std::endl;
+    std::cout << "Brrrrrrrrrrrrrrrrr   Directed by mberrrrrn" << std::endl;
     if (rand() % 2 == 0)
         std::cout << this->_target << " get Robotomised" << std::endl;
     else

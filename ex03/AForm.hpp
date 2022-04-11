@@ -33,7 +33,7 @@ class AForm
         AForm();
         AForm(std::string name, int minSigned, int minExec);
         AForm(AForm const& src);
-        ~AForm();
+        virtual ~AForm();
 
         std::string	getName() const;
         int         getMinSigned(void) const;
