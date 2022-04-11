@@ -29,7 +29,7 @@ public:
     ShrubberyCreationForm(std::string target);
     ShrubberyCreationForm(ShrubberyCreationForm const &src);
     void ft_tree(const Bureaucrat &executor) const;
-    ~ShrubberyCreationForm();
+    virtual ~ShrubberyCreationForm();
 
     void execute(Bureaucrat const &executor) const;
 

@@ -27,7 +27,7 @@ public:
     RobotomyRequestForm();
     RobotomyRequestForm(std::string target);
     RobotomyRequestForm(RobotomyRequestForm const &src);
-    ~RobotomyRequestForm();
+    virtual ~RobotomyRequestForm();
 
     void execute(Bureaucrat const &executor) const;
 
